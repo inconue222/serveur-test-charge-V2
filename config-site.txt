@@ -1,0 +1,55 @@
+# config-site.txt  —  Textes et apparence du site
+# Format : chaque ligne est une CLÉ=valeur. Les lignes commençant par #
+#          sont des commentaires et sont ignorées. Les valeurs vides sont
+#          ignorées aussi.
+#
+# Ce fichier est lu à chaque actualisation : vous pouvez changer les textes
+# et l'apparence en direct, sans redémarrer le serveur. Il suffit de
+# rafraîchir la page (F5). Valeurs par défaut si la clé est manquante.
+##############################################################################
+
+# Titre principal affiché en haut de la page.
+TITRE=Serveur de test
+
+# Sous-titre / phrase d'explication juste en dessous du titre.
+SOUS_TITRE=Utilisé pour mes propres tests de charge autorisés sur ma machine et mon réseau.
+
+# Couleur d'accent utilisée par le thème (hexadécimal sans #, ex: 00A2FF).
+COULEUR_ACCENT=00A2FF
+
+# Thème par défaut au premier lancement (sombre ou clair), si aucun choix
+# n'a encore été mémorisé dans le navigateur.
+THEME_PAR_DEFAUT=sombre
+
+# Message d'avertissement affiché en tête de page quand la page est ouverte
+# en direct depuis le disque (file://) plutôt que via le serveur.
+TEXTE_AVERTISSEMENT=Vous voyez ce site en direct depuis le disque. Il se connectera automatiquement au serveur sur http://localhost:PORT
+
+# Affiche-t-on le petit graphique des requêtes/seconde ?
+#   - oui : graphique dessiné sur un canvas en temps réel
+#   - non : la carte "Requêtes/seconde" reste simple
+AFFICHER_GRAPHIQUE=oui
+
+# Nom d'affichage pour le logo du site (ex. "test-charge.com").
+NOM_LOGO=test-charge.com
+
+# Sous-titre court pour l'en-tête (optionnel, pourrait être un slogan).
+SLOGAN=Test de charge local, 100 % sans dépendance externe
+
+# Titre de la section héros (grand titre accrocheur sur la page d'accueil).
+TITRE_HEROS=Test de charge sans contrainte
+
+# Phrase d'accroche sous le titre héros.
+SOUS_TITRE_HEROS=Simple, rapide, sécurisé et entièrement modifiable depuis le bloc-notes.
+
+# Couleur d'accent pour le pied de page / liens (par défaut comme l'en-tête).
+COULEUR_ACCENT_PIED=COULEUR_ACCENT
+
+# Texte d'avertissement du pied de page (éxécuté sur la ligne suivante du logo).
+TEXTE_PIED=outil réservé à des tests sur ses propres machines ou avec autorisation explicite.
+
+# Active-t-on le menu de navigation ?
+AFFICHER_MENU=oui
+
+# Compteurs en direct affichés sur la page d'accueil.
+AFFICHER_CHIFFRES_EN_LIVE=oui

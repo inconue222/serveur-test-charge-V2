@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil — test-charge.com</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- En-tête -->
+<header class="en-tete">
+<div class="conteneur en-tete-conteneur">
+  <div class="logo-nav">
+    <span class="logo">test-charge.com</span>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="index.html" class="actif">Accueil</a>
+      <a href="tableau-de-bord.html">Tableau de bord</a>
+      <a href="guide.html">Guide</a>
+      <a href="a-propos.html">À propos</a>
+    </nav>
+  </div>
+</div>
+</header>
+
+<!-- Section héros -->
+<section class="hero">
+<div class="conteneur">
+  <h1 id="titre-hero">Test de charge sans contrainte</h1>
+  <p class="sous-titre-hero" id="sous-titre-hero">Simple, rapide, sécurisé et entièrement modifiable depuis le bloc-notes.</p>
+  <div class="hero-actions">
+    <a href="tableau-de-bord.html" class="btn-principal">Ouvrir le tableau de bord</a>
+    <a href="guide.html" class="btn-secondaire">Lire le guide</a>
+  </div>
+</div>
+</section>
+
+<!-- Fonctionnalités -->
+<section class="fonctionnalites">
+<div class="conteneur">
+  <h2>Pourquoi test-charge.com ?</h2>
+  <div class="grille-fonctionnalites">
+    <article class="carte-fonctionnalite">
+      <h3>📊 Statistiques en temps réel</h3>
+      <p>Tableaux de bord vivants, charge CPU, mémoire RSS, RPS et latence avec mini-graphique.</p>
+    </article>
+    <article class="carte-fonctionnalite">
+      <h3>🧪 Endpoints de test</h3>
+      <p>/api/health, /api/stats, /api/config, /api/config — simples à appeler et à tester.</p>
+    </article>
+    <article class="carte-fonctionnalite">
+      <h3>📈 Graphique RPS</h3>
+      <p>Graphique temps réel des requêtes par seconde (pas de bibliothèques externes).</p>
+    </article>
+    <article class="carte-fonctionnalite">
+      <h3>🖊️ Modification depuis le bloc-notes</h3>
+      <p>Textes et apparence du site modifiables sans redémarrer le serveur.</p>
+    </article>
+    <article class="carte-fonctionnalite">
+      <h3>✅ Aucun npm install</h3>
+      <p>Node.js pur, modules intégrés uniquement, prêt à l'emploi.</p>
+    </article>
+    <article class="carte-fonctionnalite">
+      <h3>🖥️ Local, privé, sûr</h3>
+      <p>Exclusivement sur votre machine, pas d'exposition réseau, pas de dépendance.</p>
+    </article>
+  </div>
+</div>
+</section>
+
+<!-- Chiffres en direct depuis le serveur -->
+<section class="chiffres-en-direct">
+<div class="conteneur">
+  <h2>Chiffres en direct</h2>
+  <div class="grille-chiffres">
+    <div class="chiffre" id="chiffre-etat">
+      <span class="valeur" id="valeur-etat">-</span>
+      <span class="label">État</span>
+    </div>
+    <div class="chiffre" id="chiffre-uptime">
+      <span class="valeur" id="valeur-uptime">-</span>
+      <span class="label">Uptime</span>
+    </div>
+    <div class="chiffre" id="chiffre-requetes">
+      <span class="valeur" id="valeur-requetes">-</span>
+      <span class="label">Requêtes totales</span>
+    </div>
+    <div class="chiffre" id="chiffre-api">
+      <span class="valeur" id="valeur-api">-</span>
+      <span class="label">Requêtes API</span>
+    </div>
+    <div class="chiffre" id="chiffre-rps">
+      <span class="valeur" id="valeur-rps">-</span>
+      <span class="label">RPS</span>
+    </div>
+    <div class="chiffre" id="chiffre-cpu">
+      <span class="valeur" id="valeur-cpu">-</span>
+      <span class="label">CPU</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Pied de page -->
+<footer class="pied">
+<div class="conteneur">
+  <div class="pied-contenu">
+    <span class="logo-pied">test-charge.com</span>
+    <p class="mention-pied" id="texte-pied">
+      Outil réservé à des tests sur ses propres machines ou avec autorisation explicite.
+    </p>
+  </div>
+</div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

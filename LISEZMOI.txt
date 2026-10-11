@@ -1,0 +1,71 @@
+# LISEZMOI.txt
+## Prérequis
+- Node.js (version 18 ou supérieure) installé sur votre machine.
+- Vous devez avoir les droits d'exécution des fichiers .bat sur ce système.
+
+## Structure du projet
+Le dossier "serveur-test-charge" contient :
+
+- allumer.bat   : Lance le serveur en arrière-plan et ouvre le navigateur automatiquement.
+- eteindre.bat  : Arrête proprement le serveur, supprime le PID et confirme l'arrêt.
+- modifier.bat  : Ouvre config-site.txt et config-serveur.txt dans le Bloc-notes.
+- config-site.txt : Texte et apparence du site (modifiable en temps réel).
+- config-serveur.txt : Réglages du serveur (port, hôte, etc.).
+- server.js   : Le serveur Node.js pur (sans dépendance externe).
+- package.json : Définition du projet (pour information, aucun npm install requis).
+- public/     : Dossier contenant index.html, style.css, app.js.
+- LISEZMOI.txt : Ce guide.
+
+## Utilisation
+
+### Lancer le serveur
+1. Double-cliquez sur **allumer.bat**.
+2. Le script vérifie que Node.js est installé.
+3. Il vérifie qu'aucun serveur n'est déjà lancé (fichier serveur.pid).
+4. Le serveur démarre en arrière-plan (fenêtre minimisée).
+5. Après 2 secondes, votre navigateur s'ouvre automatiquement sur http://localhost:3000.
+
+### Arrêter le serveur
+1. Double-cliquez sur **eteindre.bat**.
+2. Le script lit le PID du serveur, le tue proprement, supprime le fichier PID.
+2. Si le PID n'existe pas, il tue le processus qui écoute sur le port configuré.
+3. Un message de confirmation s'affiche à l'écran.
+
+### Modifier le site
+1. Double-cliquez sur **modifier.bat**.
+2. Les fichiers config-site.txt et config-serveur.txt s'ouvrent dans le Bloc-notes.
+3. Modifiez les textes ou les paramètres, puis enregistrez.
+4. Pour que les changements du site prennent effet : rafraîchissez simplement la page (F5).
+5. Pour que les changements du serveur prennent effet : arrêtez le serveur avec eteindre.bat, puis relancez-le avec allumer.bat.
+
+## Endpoints API
+- GET /api/health   : Renvoie {"statut":"ok","heure":"..."}.
+- GET /api/stats    : Renvoie les statistiques du serveur (requêtes, latence, mémoire, CPU, uptime, etc.).
+
+## Notes importantes
+- Le serveur écoute par défaut sur le port 3000 et l'adresse 127.0.0.1 (uniquement votre machine).
+- Pour exposer le serveur au réseau local, modifiez config-serveur.txt : HOTE=0.0.0.0 (à n'utiliser que sur un réseau de confiance).
+- Le thème sombre est le thème par défaut, avec bascule en clair via le bouton "Basculer thème".
+- Le graphique des requêtes/seconde se met à jour automatiquement selon l'intervalle défini dans config-serveur.txt.
+
+## Résumé des étapes testées
+1. Création du dossier et des fichiers.
+2. Lancement du serveur avec allumer.bat → navigateur s'ouvre, page s'affiche.
+3. Test de /api/health et /api/stats avec curl (voir ci-dessous).
+4. Arrêt propre avec eteindre.bat → PID supprimé, serveur arrêté.
+5. Modification de config-site.txt via modifier.bat → rafraîchissement de la page montre les changements.
+
+## Curl de test (exemple)
+Ouvrez une invite de commandes PowerShell et exécutez :
+
+curl http://localhost:3000/api/health
+curl http://localhost:3000/api/stats
+
+## Remarque
+Cet outil est réservé à des tests sur vos propres machines ou avec autorisation explicite de votre administrateur réseau.
+
+## Fichier suppl�mentaire
+- statut.bat : affiche l'�tat du serveur (en ligne / hors ligne, PID, port, derni�re ligne log), avec pause.
+
+## Acc�s par nom local (facultatif)
+Pour acc�der via http://test-charge.local:3000, ajoutez dans C:\Windows\System32\drivers\etc\hosts (admin) : 127.0.0.1 test-charge.local. Aucun vrai domaine .com n'est achet�.

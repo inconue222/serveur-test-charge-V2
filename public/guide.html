@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide — test-charge.com</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- En-tête -->
+<header class="en-tete">
+<div class="conteneur en-tete-conteneur">
+  <div class="logo-nav">
+    <span class="logo">test-charge.com</span>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="index.html">Accueil</a>
+      <a href="tableau-de-bord.html">Tableau de bord</a>
+      <a href="guide.html" class="actif">Guide</a>
+      <a href="a-propos.html">À propos</a>
+    </nav>
+  </div>
+</div>
+</header>
+
+<main class="conteneur">
+  <h1>Guide : réaliser un test de charge autorisé</h1>
+
+  <section class="section-guide">
+    <h2>Prérequis</h2>
+    <ul>
+      <li>Node.js installé (le serveur n'utilise que des modules intégrés).</li>
+      <li>Le serveur de test lancé localement : double-cliquez sur allumer.bat.</li>
+      <li>Une seule machine : ce serveur est destiné à votre réseau/local, jamais à une cible externe sans autorisation.</li>
+    </ul>
+  </section>
+
+  <section class="section-guide">
+    <h2>Comment lire chaque statistique</h2>
+
+    <article class="carte">
+      <h3>RPS — Requêtes par seconde</h3>
+      <p>C'est le débit de votre application. Un test de charge vise à pousser les RPS vers le point de rupture. Observez si les RPS restent stables (bon signe) ou oscillent fortement (signe de saturation).</p>
+    </article>
+
+    <article class="carte">
+      <h3>Latence moyenne (ms)</h3>
+      <p>Temps moyen de réponse. Une latence qui monte avec les RPS indique que le serveur sature. Définissez un seuil d'alerte (par ex. 200 ms) et observez à quel débit il est franchi.</p>
+    </article>
+
+    <article class="carte">
+      <h3>RSS — Mémoire du processus (Mo)</h3>
+      <p>Quantité de RAM occupée par le processus Node.js. Une fuite mémoire se traduit par une croissance continue du RSS au fil du temps, même à charge stable.</p>
+    </article>
+
+    <article class="carte">
+      <h3>CPU — Charge du processeur</h3>
+      <p>Pourcentage d'utilisation CPU. Notez que ce serveur mesure le CPU réel (et non une charge théorique) car loadavg est peu fiable sous Windows. Atteindre 100 % indique un goulot d'étranglement côté CPU.</p>
+    </article>
+
+    <article class="carte">
+      <h3>Uptime</h3>
+      <p>Temps de fonctionnement depuis le redémarrage. Si le serveur a redémarré durant vos tests, notez pourquoi (panic, OOM, plantage).</p>
+    </article>
+  </section>
+
+  <section class="section-guide">
+    <h2>Bonnes pratiques</h2>
+    <ul>
+      <li><strong>Monter la charge progressivement :</strong> commencez par un RPS faible (ex. 1/s), puis augmentez par paliers de quelques unités toutes les 30 s.</li>
+      <li><strong>Tester uniquement ce qui vous appartient :</strong> serveurs locaux, vos propres machines ou avec autorisation écrite de l'administrateur réseau.</li>
+      <li><strong>Surveiller CPU et mémoire en parallèle :</strong> un goulot d'étranglement peut être CPU, I/O ou mémoire.</li>
+      <li><strong>Enregistrer les résultats :</strong> notez le point de rupture (RPS maximal soutenable) et l'état des ressources.</li>
+      <li><strong>Arrêter proprement :</strong> utilisez eteindre.bat pour arrêter le serveur de test.</li>
+    </ul>
+  </section>
+
+  <section class="section-guide">
+    <h2>Exemple de commande de test (curl)</h2>
+    <p>Une boucle simple avec curl, dans un terminal :
+
+<pre><code>for ((i=1; i<=100; i++)); do
+  curl -s -o /dev/null -w "%{http_code} %{time_total}\n" http://localhost:3000/api/health
+done</code></pre>
+    </p>
+    <p>Pour suivre l'état du serveur pendant les tests :</p>
+    <pre><code>watch -n 2 curl -s http://localhost:3000/api/stats</code></pre>
+    <p class="note">Remplacez <code>localhost</code> par <code>test-charge.local</code> si vous avez configuré le nom local (voir la section &laquo; Accès par nom local &raquo; du serveur).</p>
+  </section>
+</main>
+
+<footer class="pied">
+<div class="conteneur">
+  <span class="logo-pied">test-charge.com</span>
+  <p class="mention-pied" id="texte-pied">Outil réservé à des tests sur ses propres machines ou avec autorisation explicite.</p>
+</div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

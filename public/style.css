@@ -1,0 +1,316 @@
+/**
+ * style.css — Design du site test-charge.com
+ * Thème sombre moderne (bleu nuit) par défaut, basculable en clair.
+ * Responsive et accessible. Variable d'accent contrôlée depuis config-site.txt.
+ */
+
+:root {
+  --fond: #0b1220;
+  --texte: #e5ecef;
+  --texte-faible: #8fa2b5;
+  --carte: rgba(255, 255, 255, 0.06);
+  --carte-hover: rgba(255, 255, 255, 0.08);
+  --bordure: rgba(255, 255, 255, 0.08);
+  --accent: #00a2ff;
+  --ombre: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --rayon: 18px;
+  --police: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --transition: 0.35s ease;
+}
+
+[data-theme="clair"] {
+  --fond: #f4f6fb;
+  --texte: #15213a;
+  --texte-faible: #556677;
+  --carte: rgba(255, 255, 255, 0.85);
+  --carte-hover: rgba(255, 255, 255, 0.95);
+  --bordure: rgba(0, 0, 0, 0.05);
+  --ombre: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--police);
+  background: var(--fond);
+  color: var(--texte);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ------------------------------- En-tête (fixe) ------------------------------- */
+.en-tete {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--bordure);
+  background: var(--fond);
+  backdrop-filter: blur(12px);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.en-tete-conteneur {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-nav { display: flex; align-items: center; gap: 2rem; }
+.logo {
+  font-weight: 800; font-size: 1.35rem;
+  letter-spacing: -0.03em; color: var(--accent);
+}
+
+.nav { display: flex; gap: 1.4rem; }
+.nav a {
+  text-decoration: none; color: var(--texte); font-weight: 500; font-size: 0.95rem;
+  padding: 0.35rem 0; position: relative; transition: color var(--transition);
+}
+.nav a:hover { color: var(--accent); }
+.nav a.actif {
+  color: var(--accent);
+}
+.nav a.actif::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 2px; background: var(--accent);
+}
+
+/* Burger pour mobile */
+.burger { display: none; background: none; border: none; color: var(--texte); font-size: 1.5rem; cursor: pointer; }
+
+/* ------------------------------- Section héros ------------------------------- */
+.hero { padding: 4rem 1.25rem 5rem; text-align: center; border-bottom: 1px solid var(--bordure); }
+.hero h1 {
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.sous-titre-hero {
+  font-size: 1.15rem; color: var(--texte-faible);
+  max-width: 640px; margin: 0 auto 2rem;
+}
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* Boutons */
+.btn-principal, .btn-secondaire {
+  display: inline-block; padding: 0.7rem 1.5rem; border-radius: 9999px;
+  text-decoration: none; font-weight: 600; font-size: 1rem; transition: background var(--transition), transform 0.15s ease;
+}
+.btn-principal {
+  background: var(--accent); color: #ffffff; border: 2px solid var(--accent);
+}
+.btn-principal:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,162,255,0.35); }
+.btn-secondaire {
+  background: transparent; color: var(--texte); border: 2px solid var(--bordure);
+}
+.btn-secondaire:hover { background: var(--carte); }
+
+/* ------------------------------- Section fonctionnalités ------------------------------- */
+.fonctionnalites { padding: 4rem 1.25rem; max-width: 1100px; margin: 0 auto; }
+.fonctionnalites h2 {
+  text-align: center; font-size: 1.8rem; margin-bottom: 2.5rem;
+}
+.grille-fonctionnalites {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.carte-fonctionnalite {
+  background: var(--carte); backdrop-filter: blur(12px);
+  border: 1px solid var(--bordure); border-radius: var(--rayon);
+  padding: 1.6rem;
+  box-shadow: var(--ombre);
+  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+}
+.carte-fonctionnalite:hover {
+  transform: translateY(-6px); border-color: var(--accent);
+}
+.carte-fonctionnalite h3 {
+  font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent);
+}
+.carte-fonctionnalite p { color: var(--texte-faible); font-size: 0.95rem; }
+
+/* ------------------------------- Chiffres en direct ------------------------------- */
+.chiffres-en-direct { padding: 3rem 1.25rem; border-top: 1px solid var(--bordure); border-bottom: 1px solid var(--bordure); }
+.chiffres-en-direct .conteneur { max-width: 1100px; margin: 0 auto; }
+.chiffres-en-direct h2 { text-align: center; margin-bottom: 2rem; }
+.grille-chiffres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.2rem;
+}
+.chiffre {
+  background: var(--carte); border: 1px solid var(--bordure);
+  border-radius: var(--rayon); padding: 1.4rem; text-align: center;
+}
+.valeur {
+  display: block; font-weight: 800; font-size: 1.5rem; color: var(--texte);
+  letter-spacing: -0.02em; margin-bottom: 0.3rem;
+}
+.valeur.etat-en-ligne { color: #2ecc71; }
+.valeur.etat-hors-ligne { color: #e74c3c; }
+.chiffre .label { font-size: 0.8rem; color: var(--texte-faible); }
+
+/* ------------------------------- Conteneur page / section ------------------------------- */
+.conteneur { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+
+/* ------------------------------- Grille de stats ------------------------------- */
+.grille-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+.carte {
+  background: var(--carte); backdrop-filter: blur(12px);
+  border: 1px solid var(--bordure); border-radius: var(--rayon);
+  padding: 1.35rem 1.25rem;
+  box-shadow: var(--ombre);
+  transition: background var(--transition), border-color var(--transition);
+}
+.carte:hover { background: var(--carte-hover); border-color: rgba(255, 255, 255, 0.12); }
+.carte h3 {
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--texte-faible); margin-bottom: 0.35rem;
+}
+.carte .valeur {
+  font-weight: 700; font-size: 1.5rem; color: var(--texte);
+  letter-spacing: -0.02em;
+}
+
+/* ------------------------------- Graphique ------------------------------- */
+.graphique-section { margin-bottom: 2.5rem; }
+.graphique-section h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.85rem; }
+canvas { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--bordure); background: rgba(255,255,255,0.02); }
+
+/* ------------------------------- Endpoints ------------------------------- */
+.endpoints { margin-bottom: 2.5rem; }
+.endpoints h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.85rem; }
+.endpoints .ligne {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
+  margin: 0.7rem 0;
+}
+.endpoints code {
+  background: rgba(255,255,255,0.06); padding: 0.2rem 0.6rem; border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, monospace; font-size: 0.95rem;
+}
+.endpoints button {
+  border: 1px solid var(--bordure); background: var(--carte); color: var(--texte);
+  padding: 0.35rem 0.9rem; border-radius: 9999px; cursor: pointer; font-size: 0.85rem;
+  transition: background var(--transition);
+}
+.endpoints button:hover { background: var(--carte-hover); }
+.endpoints button[disabled] { opacity: 0.6; cursor: not-allowed; }
+.endpoints pre {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--bordure); border-radius: 10px;
+  padding: 0.75rem; overflow-x: auto; font-size: 0.85rem; color: var(--texte);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  margin-top: 0.4rem;
+}
+
+/* ------------------------------- Pied de page ------------------------------- */
+.pied {
+  padding: 2rem 1.25rem;
+  border-top: 1px solid var(--bordure);
+  background: rgba(255,255,255,0.02);
+}
+[data-theme="clair"] .pied { background: rgba(0,0,0,0.02); }
+.pied-contenu {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.logo-pied { font-weight: 800; font-size: 1.15rem; color: var(--accent); text-decoration: none; }
+.mention-pied {
+  color: var(--texte-faible); font-size: 0.85rem; margin: 0;
+  white-space: nowrap;
+}
+
+/* ------------------------------- Pied actualisation (dashboard) ------------------------------- */
+.pied-actualisation {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--bordure);
+  font-size: 0.85rem; color: var(--texte-faible);
+}
+#btn-theme {
+  border: 1px solid var(--bordure); background: var(--carte); color: var(--texte);
+  padding: 0.45rem 1.1rem; border-radius: 9999px; cursor: pointer; font-weight: 600;
+  transition: background var(--transition);
+}
+#btn-theme:hover { background: var(--carte-hover); }
+
+/* ------------------------------- Guide ------------------------------- */
+.section-guide { margin-bottom: 2.5rem; }
+.section-guide h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+.section-guide ul { margin-left: 1.4rem; margin-bottom: 1rem; }
+.section-guide li { margin-bottom: 0.35rem; color: var(--texte-faible); }
+.section-guide article { margin-bottom: 1.2rem; }
+.section-guide article h3 { margin-bottom: 0.35rem; color: var(--texte); }
+.section-guide pre {
+  background: rgba(0,0,0,0.25); border: 1px solid var(--bordure); border-radius: 10px;
+  padding: 0.9rem; overflow-x: auto; font-size: 0.9rem; color: var(--texte);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+[data-theme="clair"] .section-guide pre { background: rgba(0,0,0,0.05); }
+.section-guide p.note { margin-top: 0.9rem; font-size: 0.9rem; }
+
+/* ------------------------------- Pastille d'état (ancienne page) ------------------------------- */
+.pastille {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  margin-top: 1rem; padding: 0.45rem 1.1rem;
+  border-radius: 9999px; border: 1px solid var(--bordure);
+  font-weight: 600; font-size: 0.95rem; letter-spacing: 0.02em;
+  background: var(--carte); backdrop-filter: blur(8px);
+  transition: background var(--transition);
+}
+.pastille-en-ligne { color: #2ecc71; border-color: rgba(46, 204, 113, 0.25); }
+.pastille-hors-ligne { color: #e74c3c; border-color: rgba(231, 76, 60, 0.25); }
+.pastille .point {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: currentColor; animation: pulse 1.8s infinite ease-in-out;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+  50% { opacity: 0.75; box-shadow: 0 0 8px 2px currentColor; }
+}
+.avertissement {
+  color: var(--texte-faible); font-size: 0.82rem; margin-top: 0.75rem;
+  max-width: 560px; margin-left: auto; margin-right: auto;
+}
+
+/* ------------------------------- Responsive ------------------------------- */
+@media (max-width: 900px) {
+  .burger { display: block; z-index: 101; }
+  .nav {
+    position: fixed; top: 60px; right: -100%;
+    width: 80%; max-width: 320px; height: calc(100vh - 60px);
+    background: var(--fond); border-left: 1px solid var(--bordure);
+    flex-direction: column; padding: 2rem 1.5rem;
+    transition: right var(--transition);
+    overflow-y: auto;
+  }
+  .nav.ouvert { right: 0; }
+  .logo-nav { gap: 1rem; }
+  .nav a.actif::after { display: none; }
+}
+
+@media (max-width: 640px) {
+  .conteneur { padding: 1rem 0.9rem 2rem; }
+  .grille-stats { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  .grille-chiffres { grid-template-columns: repeat(3, 1fr); }
+  .pied-actualisation { flex-direction: column; align-items: flex-start; }
+  .hero { padding: 2.5rem 1.25rem 3.5rem; }
+  .fonctionnalites { padding: 2.5rem 1.25rem; }
+  .fonctionnalites h2 { font-size: 1.4rem; }
+  .chiffres-en-direct { padding: 2rem 1.25rem; }
+  .mention-pied { white-space: normal; }
+  .pied-contenu { flex-direction: column; text-align: center; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn-principal, .btn-secondaire { text-align: center; }
+}

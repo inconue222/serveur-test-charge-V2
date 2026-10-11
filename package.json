@@ -1,0 +1,14 @@
+{
+  "nom": "serveur-test-charge",
+  "version": "1.0.0",
+  "description": "Petit serveur de test local (Node.js pur, sans dépendance) pour des tests de charge personnels.",
+  "main": "server.js",
+  "scripts": {
+    "demarrer": "node server.js"
+  },
+  "auteur": "Usage personnel",
+  "licence": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  }
+}

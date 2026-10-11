@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau de bord — test-charge.com</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- En-tête -->
+<header class="en-tete">
+<div class="conteneur en-tete-conteneur">
+  <div class="logo-nav">
+    <span class="logo">test-charge.com</span>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="index.html">Accueil</a>
+      <a href="tableau-de-bord.html" class="actif">Tableau de bord</a>
+      <a href="guide.html">Guide</a>
+      <a href="a-propos.html">À propos</a>
+    </nav>
+  </div>
+</div>
+</header>
+
+<main class="conteneur">
+
+  <section aria-label="Statistiques" class="grille-stats">
+    <article class="carte stat" aria-label="Requêtes totales">
+      <h3>Requêtes totales</h3>
+      <div class="valeur" id="stat-tot">-</div>
+    </article>
+    <article class="carte stat" aria-label="Requêtes API">
+      <h3>Requêtes API</h3>
+      <div class="valeur" id="stat-api">-</div>
+    </article>
+    <article class="carte stat" aria-label="Requêtes dashboard">
+      <h3>Requêtes dashboard</h3>
+      <div class="valeur" id="stat-dash">-</div>
+    </article>
+    <article class="carte stat" aria-label="Requêtes par seconde">
+      <h3>Requêtes / seconde</h3>
+      <div class="valeur" id="stat-rps">-</div>
+    </article>
+    <article class="carte stat" aria-label="Latence moyenne">
+      <h3>Latence moyenne</h3>
+      <div class="valeur" id="stat-lat">-</div>
+    </article>
+    <article class="carte stat" aria-label="Mémoire RSS">
+      <h3>Mémoire RSS</h3>
+      <div class="valeur" id="stat-mem">-</div>
+    </article>
+    <article class="carte stat" aria-label="Charge CPU">
+      <h3>Charge CPU</h3>
+      <div class="valeur" id="stat-cpu">-</div>
+    </article>
+    <article class="carte stat" aria-label="Uptime">
+      <h3>Uptime</h3>
+      <div class="valeur" id="stat-upt">-</div>
+    </article>
+    <article class="carte stat" aria-label="Version Node">
+      <h3>Version Node</h3>
+      <div class="valeur" id="stat-node">-</div>
+    </article>
+  </section>
+
+  <section aria-label="Graphique temps réel" class="carte graphique-section" id="section-graphique">
+    <h2>Requêtes / seconde — 60 dernières mesures</h2>
+    <canvas id="canvas-rps" width="900" height="220" aria-label="Graphique des requêtes par seconde"></canvas>
+  </section>
+
+  <section aria-label="Endpoints de test" class="carte endpoints">
+    <h2>Endpoint de test</h2>
+    <div class="endpoint" data-path="/api/health">
+      <div class="ligne">
+        <code>/api/health</code>
+        <button type="button" class="btn-tester">Tester</button>
+        <button type="button" class="btn-copier" data-url="http://localhost:3000/api/health">Copier l'URL</button>
+      </div>
+      <pre class="reponse-json" aria-live="polite"></pre>
+    </div>
+    <div class="endpoint" data-path="/api/stats">
+      <div class="ligne">
+        <code>/api/stats</code>
+        <button type="button" class="btn-tester">Tester</button>
+        <button type="button" class="btn-copier" data-url="http://localhost:3000/api/stats">Copier l'URL</button>
+      </div>
+      <pre class="reponse-json" aria-live="polite"></pre>
+    </div>
+    <div class="endpoint" data-path="/api/config">
+      <div class="ligne">
+        <code>/api/config</code>
+        <button type="button" class="btn-tester">Tester</button>
+        <button type="button" class="btn-copier" data-url="http://localhost:3000/api/config">Copier l'URL</button>
+      </div>
+      <pre class="reponse-json" aria-live="polite"></pre>
+    </div>
+  </section>
+
+  <button type="button" id="btn-refresh" class="btn-refresh">Actualiser</button>
+<section aria-label="Actualisation" class="pied-actualisation">
+    <span id="msg-actualisation" style="display:none;color:#00a2ff;font-weight:600;font-size:0.85rem;">Actualisation automatique : désactivée</span>
+    <p>Dernière mise à jour : <time id="heure-maj" datetime="">—</time></p>
+    <p>Intervalle du serveur : <span id="intervalle">2000</span> ms</p>
+    <button type="button" id="btn-theme">Basculer thème</button>
+  </section>
+
+</main>
+
+<footer class="pied">
+<div class="conteneur">
+  <span class="logo-pied">test-charge.com</span>
+  <p class="mention-pied" id="texte-pied">Outil réservé à des tests sur ses propres machines ou avec autorisation explicite.</p>
+</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

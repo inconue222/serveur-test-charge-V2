@@ -1,0 +1,8 @@
+##############################################################################
+# config-serveur.txt  —  Réglages du serveur Node.js
+##############################################################################
+PORT=3000
+HOTE=127.0.0.1
+INTERVALLE_ACTUALISATION=2000
+CORS=oui
+COMPTER_DASHBOARD=non

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — test-charge.com</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="en-tete">
+<div class="conteneur en-tete-conteneur">
+  <div class="logo-nav">
+    <span class="logo">test-charge.com</span>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="index.html">Accueil</a>
+      <a href="tableau-de-bord.html">Tableau de bord</a>
+      <a href="guide.html">Guide</a>
+      <a href="a-propos.html" class="actif">À propos</a>
+    </nav>
+  </div>
+</div>
+</header>
+
+<main class="conteneur">
+  <h1>À propos</h1>
+  <p>Le serveur de test <strong>test-charge.com</strong> est un outil local, pédagogique et entièrement autonome.</p>
+
+  <section>
+    <h2>Limites</h2>
+    <ul>
+      <li>Le serveur est conçu uniquement pour des tests autorisés sur vos propres machines.</li>
+      <li>Aucun domaine réel n'est acheté : le nom <code>test-charge.com</code> est utilisé localement.</li>
+      <li>Le code est 100 % en français, sans dépendance externe (uniquement des modules intégrés de Node.js).</li>
+      <li>Le design est responsive et accessible, mais reste volontairement simple : il ne s'agit pas d'un produit commercial.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Objectif</h2>
+    <p>Offrir un moyen rapide et sans installation d'observer des statistiques en direct — sans rien envoyer sur un réseau tiers. Vous pouvez changer le texte du site, la couleur d'accent et le thème directement depuis le bloc-notes.</p>
+  </section>
+</main>
+
+<footer class="pied">
+<div class="conteneur">
+  <span class="logo-pied">test-charge.com</span>
+  <p class="mention-pied" id="texte-pied">Outil réservé à des tests sur ses propres machines ou avec autorisation explicite.</p>
+</div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
