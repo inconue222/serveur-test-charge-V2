@@ -6,8 +6,7 @@
  */
 
 const PORT = 3000;
-const SERVEUR_URL = `http://localhost:${PORT}`;
-
+const SERVEUR_URL = location.protocol === "file:" ? `http://localhost:${PORT}` : "";
 // ------------------------------- Thème -------------------------------
 function appliquerTheme(thème) {
   document.documentElement.setAttribute('data-theme', thème);
