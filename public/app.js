@@ -6,7 +6,7 @@
 
 // Port par défaut ; remplacé par le serveur si livré via HTTP.
 const PORT = 3000;
-const SERVEUR_URL = `http://localhost:${PORT}`;
+const SERVEUR_URL = location.protocol === "file:" ? `http://localhost:${PORT}` : "";
 
 // Références DOM du tableau de bord
 const $statTot = document.getElementById('stat-tot');
